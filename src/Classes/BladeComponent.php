@@ -163,6 +163,7 @@ abstract class BladeComponent {
             $data['name'] = $name;
             $data['buttons'] = $this->buttons;
             $data['inputs'] = $this->inputs;
+            $data['data'] = $this->data;
             /* Checking if there is a default JavaScript file to be rendered */
             if ($this->files->exists($this->jsPath.DIRECTORY_SEPARATOR.$this->commandName.'.js')) {
                 $javaScript = $this->files->get($this->jsPath.DIRECTORY_SEPARATOR.$this->commandName.'.js');
