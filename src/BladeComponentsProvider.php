@@ -7,6 +7,18 @@ use Moura\BladeComponents\Classes\BladeComponent;
 
 class BladeComponentsProvider extends ServiceProvider{
 
+    /**
+     * Define artisan console command
+     * @var array
+     */
+    protected $commands = [
+        'Moura\BladeComponents\Console\Commands\BladeCommand'
+    ];
+
+    /**
+     * Store all registered components objects
+     * @var array
+     */
     public static $registeredComponents = array();
 
     /**
@@ -40,28 +52,31 @@ class BladeComponentsProvider extends ServiceProvider{
      */
     public function register()
     {
-        /* Disponibilizando a configuração do provider */
+        /* Registering BladeCommand */
+        $this->commands($this->commands);
+
+        /* Providing the provider settings */
         $this->setupConfig();
 
-        /* Adicionando o path das views */
+        /* Adding the path of views and creating a namespace for them */
         View::addLocation(app_path('BladeComponents'.DIRECTORY_SEPARATOR.'Views'));
         View::addNamespace('BladeComponents', app_path('BladeComponents'.DIRECTORY_SEPARATOR.'Views'));
     }
 
     /**
-     * Inicializa todos os components passados no arquivo de configuração
+     * Register all configured components
      * @throws \Exception
      */
     public function startComponents(){
         $bladeComponents = $this->app['config']['bladecomponents']['components'];
         foreach ($bladeComponents as $componentClass){
-            /* Instanciando o novo componente */
+            /* Component instance */
             $instance = app($componentClass);
-            /* Validando os básicos de funcionamento do service provider e do componente*/
+            /* Validate component */
             $this->validate($instance);
-            /* Recuperando o commando que será criado para esse componente */
+            /* Set blade directive command */
             $componentName = $instance->commandName();
-
+            /* Checks if the component is not already registered */
             if (!array_key_exists($componentName,self::$registeredComponents)) {
                 self::$registeredComponents[$componentName]['instance'] = $instance;
                 self::$registeredComponents[$componentName]['instanceName'] = array();
@@ -71,16 +86,19 @@ class BladeComponentsProvider extends ServiceProvider{
         }
     }
 
+    /**
+     * Validating the component registration process
+     * @param BladeComponent $component
+     * @throws \Exception
+     */
     public function validate(BladeComponent &$component){
-        /* Checa se o diretório BladeComponents existe */
+        /* Check if BladeComponents directory exists */
         if (!is_dir(app_path('BladeComponents'))) throw new \Exception("BladeComponents directory not found in '".app_path()."'");
-        /* Checa se o diretório Components existe */
+        /* Check if Components directory exists */
         if (!is_dir(app_path('BladeComponents'.DIRECTORY_SEPARATOR.'Components'))) throw new \Exception("Components directory not found in '".app_path('BladeComponents')."'");
-        /* Checa se o diretório Views existe */
+        /* Check if Views directory exists */
         if (!is_dir(app_path('BladeComponents'.DIRECTORY_SEPARATOR.'Views'))) throw new \Exception("Views directory not found in '".app_path('BladeComponents')."'");
-        /* Checa se a view do componente existe*/
-        if (!is_dir(app_path('BladeComponents/Views'))) throw new \Exception("Views directory not found in '".app_path('BladeComponents')."'");
-        /* Checa se o arquivo de view existe */
+        /* Check if the view file exists */
         if (!file_exists(app_path('BladeComponents'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.$component->view().'.blade.php'))) throw new \Exception("Views '".DIRECTORY_SEPARATOR.$component->view().'.blade.php'."' not found");
 
     }

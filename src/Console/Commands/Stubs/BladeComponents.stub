@@ -1,0 +1,44 @@
+namespace DummyNamespace;
+
+use Moura\BladeComponents\Classes\BladeComponent;
+use \Form;
+class DummyClass extends BladeComponent{
+
+    /**
+     * Returns an associative (['key' => 'html_input_code']) array with the HTML code of all inputs, labels, selects, radio buttons, checkboxes and textareas, which will be available in view of DummyClass.
+     * Preferably use the Form facade to create these elements.
+     * Examples: Form::select(); Form::label(); Form::input();
+     * @return array
+     */
+    function inputs()
+    {
+        return [
+            //'key' => 'html_input_code',
+        ];
+    }
+
+
+    /**
+     * Returns an associative (['key' => 'html_button_code']) array with the HTML code of all the buttons that will be available in view of DummyClass.
+     * Preferably use the Form facade to create these elements.
+     * Examples: Form::button(); Form::submit(); Form::reset();;
+     * @return array
+     */
+    function buttons()
+    {
+        return [
+            //'key' => 'html_button_code',
+        ];
+    }
+
+    /**
+     * Returns an associative (['key' => DataObject]) array of data objects to be used as values passed to the inputs and buttons.
+     * @return array
+     */
+    function data()
+    {
+        return [
+            //'key' => DataObject,
+        ];
+    }
+}
