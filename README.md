@@ -1,6 +1,6 @@
 ##BladeComponents - Pacote para criação de componentes não acoplados no Laravel 5.1 utilizando diretivas do Blade
 
-![BladeComponents Logo](https://lh5.googleusercontent.com/lYodL3Wi4hWB4A4VkbA4pFkFxNU-nw95I8qCXWCwr46kTlycCYQ36cwZE43FCz6WcTMOeKYPj4_WRQ=w1896-h835-rw)
+![BladeComponents Logo](https://raw.githubusercontent.com/lmelomoura/blade-components/master/src/Assets/logo.png)
 
 Esse pacote permite criar de forma fácil e simplifica componentes com funções diversas para serem utilizados e reutilizados de maneira simples.
 Com a disponibilização de uma nova funcionalidade no Artisan, é possível com um único comando gerar toda a estrutura de funcionamento de seus novos componentes, separando todos os seus arquivos de forma organizada (PHP, CSS, HTML e Javascript).
