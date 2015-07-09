@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Blade-components : BladeComponents - Pacote para criação de componentes não acoplados no Laravel 5.1 utilizando diretivas do Blade">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Blade-components</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lmelomoura/blade-components">View on GitHub</a>
+
+          <h1 id="project_title">Blade-components</h1>
+          <h2 id="project_tagline">BladeComponents - Pacote para criação de componentes não acoplados no Laravel 5.1 utilizando diretivas do Blade</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/lmelomoura/blade-components/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/lmelomoura/blade-components/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a id="bladecomponents---pacote-para-criação-de-componentes-não-acoplados-no-laravel-51-utilizando-diretivas-do-blade" class="anchor" href="#bladecomponents---pacote-para-cria%C3%A7%C3%A3o-de-componentes-n%C3%A3o-acoplados-no-laravel-51-utilizando-diretivas-do-blade" aria-hidden="true"><span class="octicon octicon-link"></span></a>BladeComponents - Pacote para criação de componentes não acoplados no Laravel 5.1 utilizando diretivas do Blade</h2>
+
+<p><img src="https://lh3.googleusercontent.com/UwWt_PBqE8kJUVRaKnv0NxCk3ISpcI3GRxa-MHUm2XDeKhWT4lP9wz8P9v5JkUYy8LWVZGZ2=w1896-h835-rw" alt="BladeComponents Logo">
+Esse pacote permite criar de forma fácil e simplifica componentes com funções diversas para serem utilizados e reutilizados de maneira simples.
+Com a disponibilização de uma nova funcionalidade no Artisan, é possível com um único comando gerar toda a estrutura de funcionamento de seus novos componentes, separando todos os seus arquivos de forma organizada (PHP, CSS, HTML e Javascript).</p>
+
+<h2>
+<a id="instalação" class="anchor" href="#instala%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalação</h2>
+
+<p>O componente deve ser instalado (requerido) dentro do diretório padrão de sua aplicação através Composer, com o comando:</p>
+
+<pre><code>composer require moura/bladecomponents
+</code></pre>
+
+<h2>
+<a id="configuração" class="anchor" href="#configura%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuração</h2>
+
+<p>Após a instalação algumas configurações precisam ser feitas para que o BladeComponents funcione e para que o Blade consiga renderizar de maneira correta seus componentes.</p>
+
+<h4>
+<a id="configurando-o-service-provider" class="anchor" href="#configurando-o-service-provider" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurando o service provider</h4>
+
+<p>O <code>provider</code> do BladeComponents precisa ser adicionado ao vetor de <code>providers</code> dentro do arquivo <code>config/app.php</code></p>
+
+<pre><code>Moura\BladeComponents\BladeComponentsProvider::class
+</code></pre>
+
+<blockquote>
+<p><em>Se o provider não for devidamente adicionado ao vetor de providers do Laravel, nenhum componente criado pelo BladeComponents irá funcionar</em></p>
+</blockquote>
+
+<h4>
+<a id="gerando-o-arquivo-de-configuração" class="anchor" href="#gerando-o-arquivo-de-configura%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gerando o arquivo de configuração</h4>
+
+<p>O BladeComponents, precisa de um arquivo de configuração. Para começar, precisamos criar esse arquivo de configuração em <code>config/bladecomponents.php</code>
+Execute o comando:</p>
+
+<pre><code>php artisan vendor:publish
+</code></pre>
+
+<p>Este comando irá criar o arquivo de configuração para sua aplicação. Você pode modificar esse arquivo para definir a sua própria configuração. </p>
+
+<blockquote>
+<p><em>Certifique-se de verificar se há alterações no arquivo de configuração original deste pacote entre os lançamentos de novas versões</em></p>
+</blockquote>
+
+<h2>
+<a id="utilização-do-bladecomponents" class="anchor" href="#utiliza%C3%A7%C3%A3o-do-bladecomponents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilização do BladeComponents</h2>
+
+<p>A utilização do BladeComponents é bastante simples.
+Para criar um novo componente, execute o comando:</p>
+
+<pre><code>php artisan make:bladecomponent Name
+</code></pre>
+
+<p>Esse comando fará com que o BladeComponents gere toda a estrutura necessária para o funcionamento do novo componente.
+Por padrão, o componente é criado utilizando o nome passado e concatenado ao final a plavra <code>componente</code> 
+Ao final seguinte estrutura de diretórios e arquivos será criada em sua aplicação:</p>
+
+<pre><code>&lt;app&gt;\
+    &lt;BladeComponentes&gt;\
+        &lt;Components&gt;\
+            NameComponent.php
+        &lt;Scripts&gt;\
+            &lt;css&gt;\
+                NameComponent.css
+            &lt;js&gt;\
+                NameComponent.js
+        &lt;Views&gt;\
+            NameComponent.blade.php
+</code></pre>
+
+<p>Agora que o componente foi criado, ele precisa ser registrado no vetor de configuração de componentes que está localizado dentro do arquivo <code>config/bladecomponents.php</code>
+Após editar o arquivo <code>config/bladecomponents.php</code> e registrar o novo componente, ele estará pronto para ser implementado.</p>
+
+<blockquote>
+<p><em>É possível gerar um componente sem arquivos CSS e JS exclusivos. Bastar informar o parâmetro <code>--plain</code> para o comando do BladeComponents desta maneira:</em></p>
+</blockquote>
+
+<pre><code>php artisan make:bladecomponent Name --plain
+</code></pre>
+
+<h2>
+<a id="implementação-do-component" class="anchor" href="#implementa%C3%A7%C3%A3o-do-component" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementação do component</h2>
+
+<p>A implementação do componente deve ser feita alterando os arquivo gerados de acordo com a necessidade do seu aplicativo.</p>
+
+<blockquote>
+<p><em>O BladeComponents permite que se use <em>diretivas do Blade</em> dentro de todos os seus arquivos. É possível por exemplo utilizar diretivas de controle e laços de repetição <em>dentro dos arquivos JS e CSS</em> de forma transparente</em></p>
+</blockquote>
+
+<h3>
+<a id="a-classe-bladecomponent" class="anchor" href="#a-classe-bladecomponent" aria-hidden="true"><span class="octicon octicon-link"></span></a>A classe BladeComponent</h3>
+
+<p>Todo componente criado pelo BladeComponents (exemplo <code>app/BladeComponents/Components/NameComponent.php</code>) herda uma classe abstrata própria. 
+A estrutura padrão de classe de um componente é a seguinte:</p>
+
+<pre><code>class NameComponent extends BladeComponent{
+  function inputs()
+  {
+    return [
+
+    ];
+  }
+
+  function buttons()
+  {
+    return [
+
+    ];
+  }
+
+  function data()
+  {
+    return [
+
+    ];
+  }
+}
+</code></pre>
+
+<p>Essa classe abstrata herdada pelos components é a <code>BladeComponent</code> que implementa 3 métodos abstratos. São eles:</p>
+
+<h5>
+<a id="inputs" class="anchor" href="#inputs" aria-hidden="true"><span class="octicon octicon-link"></span></a>inputs()</h5>
+
+<pre><code>asbtract function inputs();
+</code></pre>
+
+<blockquote>
+<p><em>Essa função retorna ao BladeComponents um array associativo contendo o código HTML de todos os <code>inputs</code>, <code>labels</code>, <code>selects</code>, <code>radio buttons</code>, <code>checkboxes</code> e <code>textareas</code> que serão utilizados pelos arquivos de view, css e js através do vetor de inputs <code>$inputs['identificador']</code></em></p>
+</blockquote>
+
+<p>Exemplo de implementação da <code>asbtract function inputs()</code> com um <code>label</code> e um <code>input</code> text:</p>
+
+<pre><code>function inputs()
+{
+  return [
+    'foolabel' =&gt; Form::label(
+        'fooSelect',
+        'Text for label',
+        [
+            'class' =&gt; 'foo-class'
+        ]
+    ),
+    'fooSelect' =&gt; Form::select(
+        'fooSelect',
+        [' '],
+        null,
+        [
+            'multiple' =&gt; null,
+            'class'    =&gt; 'foo-class'
+        ]
+    )
+  ];
+}
+</code></pre>
+
+<blockquote>
+<p><em>É extremamente recomendado utilizar a Form facade para gerar o HTML de todos os inputs e assim seguir o padrão Laravel para garantir o correto funcionamento do componente</em></p>
+</blockquote>
+
+<h5>
+<a id="buttons" class="anchor" href="#buttons" aria-hidden="true"><span class="octicon octicon-link"></span></a>buttons()</h5>
+
+<pre><code>asbtract function buttons();
+</code></pre>
+
+<blockquote>
+<p><em>Essa função retorna ao BladeComponents um array associativo contendo o código HTML de todos os <code>buttons</code> que serão utilizados pelos arquivos de view, css e js através do vetor de buttons <code>$buttons['identificador']</code></em></p>
+</blockquote>
+
+<p>Exemplo de implementação da <code>asbtract function buttons()</code> com um submit <code>button</code> e um reset <code>button</code>:</p>
+
+<pre><code>function buttons()
+{
+  return [
+    'submitButton' =&gt; Form::submit('Click Me!'),
+    'resetButton =&gt; Form::reset('Clear form')
+  ];
+}
+</code></pre>
+
+<blockquote>
+<p><em>É extremamente recomendado utilizar a Form facade para gerar o HTML de todos os <code>buttons</code> e assim seguir o padrão Laravel para garantir o correto funcionamento do componente</em>  </p>
+</blockquote>
+
+<h5>
+<a id="data" class="anchor" href="#data" aria-hidden="true"><span class="octicon octicon-link"></span></a>data()</h5>
+
+<pre><code>asbtract function data();
+</code></pre>
+
+<blockquote>
+<p><em>Essa função retorna ao BladeComponents um array associativo contendo objetos de dados que poderão ser utilizados para a construção dos <code>inputs</code> e <code>buttons</code> através da função <code>$this-&gt;getData('identificador')</code> ou pelos arquivos de view, css e js através do vetor de dados <code>$data['identificador']</code></em></p>
+</blockquote>
+
+<p>Exemplo de implementação da <code>asbtract function data()</code> com <code>objeto</code> de dados qualquer:</p>
+
+<pre><code>function data()
+{
+  return [
+    'fooObject' =&gt; app(FooNameSpace\FooClass)
+  ];
+}
+</code></pre>
+
+<h3>
+<a id="css-de-estilo-do-componente" class="anchor" href="#css-de-estilo-do-componente" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS de estilo do componente</h3>
+
+<p>Quando o compoente é criado pelo BladeComponents sem que o parâmetro <code>--plain</code> seja passado ao comando, por padrão um arquivo CSS é criado para o novo componente.</p>
+
+<pre><code>app/BladeComponents/Scripts/css/ComponentName.css
+</code></pre>
+
+<p>Utlize esse arquivo para criar os estilos prórpios de seu componente.</p>
+
+<h4>
+<a id="utilizando-diretivas-blade-dentro-de-arquivos-css" class="anchor" href="#utilizando-diretivas-blade-dentro-de-arquivos-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilizando diretivas blade dentro de arquivos CSS</h4>
+
+<p>O BladeComponents permite ao desenvolvedor que utilize diretivas blade dentro do arquivo CSS de stilo padrão do componente.
+Exemplo de arquivo CSS contendo diretivas Blade:</p>
+
+<pre><code>.componentName-class div{
+  @if(array_key_exists('fooLabel',$inputs))
+    border-color : red;
+  @else
+    border-color : blue;
+  @endif;
+}
+</code></pre>
+
+<blockquote>
+<p><em>É possível utlizar todos os inputs, buttons e data objects que forão defidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo CSS <code>dinâmico</code></em></p>
+</blockquote>
+
+<h3>
+<a id="javascript-de-controle-do-componente" class="anchor" href="#javascript-de-controle-do-componente" aria-hidden="true"><span class="octicon octicon-link"></span></a>Javascript de controle do componente</h3>
+
+<p>Quando o compoente é criado pelo BladeComponents sem que o parâmetro <code>--plain</code> seja passado ao comando, por padrão um arquivo JS é criado para o novo componente.</p>
+
+<pre><code>app/BladeComponents/Scripts/js/ComponentName.js
+</code></pre>
+
+<p>Utlize esse arquivo para criar todo o javascript de controle de seu componente</p>
+
+<h4>
+<a id="utilizando-diretivas-blade-dentro-de-arquivos-js" class="anchor" href="#utilizando-diretivas-blade-dentro-de-arquivos-js" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilizando diretivas blade dentro de arquivos JS</h4>
+
+<p>O BladeComponents permite ao desenvolvedor que utilize diretivas blade dentro do arquivo JS de controle padrão do componente.
+Exemplo de arquivo JS contendo diretivas Blade utilizando jQuery framework:</p>
+
+<pre><code>$(document).ready(function() {
+  @if(array_key_exists('fooLabel',$inputs))
+    console.log("ready!");
+  @else
+    console.log("Not ready!");
+  @endif;
+});
+</code></pre>
+
+<blockquote>
+<p><em>É possível utlizar todos os inputs, buttons e data objects que forão defidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo JS <code>dinâmico</code></em></p>
+</blockquote>
+
+<h2>
+<a id="utilização-dos-componentes-dentro-da-aplicação" class="anchor" href="#utiliza%C3%A7%C3%A3o-dos-componentes-dentro-da-aplica%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilização dos componentes dentro da aplicação</h2>
+
+<p>Todo componente criado e registrado no arquivo de configuração do BladeComponents, é também transformado em uma diretiva do Blade e sua utilização é muito simples.
+Dentro de um arquivo de view qualquer, faça o seguinte:</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  @NameComponent('Name');
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<blockquote>
+<p><em>É possível que ao chamar o componente, seja passado como segundo parâmtro um vetor com variáveis para serem utilizadas na view padrão do componente</em></p>
+</blockquote>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  @NameComponent('Name',['foo' =&gt; 'bar','other' =&gt; ObjectClass]);
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Blade-components maintained by <a href="https://github.com/lmelomoura">lmelomoura</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
