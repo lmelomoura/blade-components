@@ -39,6 +39,10 @@
 <p>Esse pacote permite criar de forma fácil e simplifica componentes com funções diversas para serem utilizados e reutilizados de maneira simples.
 Com a disponibilização de uma nova funcionalidade no Artisan, é possível com um único comando gerar toda a estrutura de funcionamento de seus novos componentes, separando todos os seus arquivos de forma organizada (PHP, CSS, HTML e Javascript).</p>
 
+<p><a href="https://github.com/lmelomoura/blade-components/issues"><img src="https://img.shields.io/github/issues/lmelomoura/blade-components.svg" alt="GitHub issues"></a>
+<a href="https://github.com/lmelomoura/blade-components/network"><img src="https://img.shields.io/github/forks/lmelomoura/blade-components.svg" alt="GitHub forks"></a>
+<a href="https://github.com/lmelomoura/blade-components/stargazers"><img src="https://img.shields.io/github/stars/lmelomoura/blade-components.svg" alt="GitHub stars"></a></p>
+
 <h2>
 <a id="instalação" class="anchor" href="#instala%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalação</h2>
 
@@ -130,29 +134,28 @@ Após editar o arquivo <code>config/bladecomponents.php</code> e registrar o nov
 <p>Todo componente criado pelo BladeComponents (exemplo <code>app/BladeComponents/Components/NameComponent.php</code>) herda uma classe abstrata própria. 
 A estrutura padrão de classe de um componente é a seguinte:</p>
 
-<pre><code>class NameComponent extends BladeComponent{
-  function inputs()
-  {
-    return [
-
-    ];
-  }
-
-  function buttons()
-  {
-    return [
-
-    ];
-  }
-
-  function data()
-  {
-    return [
-
-    ];
-  }
-}
-</code></pre>
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">NameComponent</span> <span class="pl-k">extends</span> <span class="pl-e">BladeComponent</span>{</span>
+<span class="pl-s1">  <span class="pl-k">function</span> <span class="pl-en">inputs</span>()</span>
+<span class="pl-s1">  {</span>
+<span class="pl-s1">    <span class="pl-k">return</span> [</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    ];</span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-k">function</span> <span class="pl-en">buttons</span>()</span>
+<span class="pl-s1">  {</span>
+<span class="pl-s1">    <span class="pl-k">return</span> [</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    ];</span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-k">function</span> <span class="pl-en">data</span>()</span>
+<span class="pl-s1">  {</span>
+<span class="pl-s1">    <span class="pl-k">return</span> [</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    ];</span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1">}</span></pre></div>
 
 <p>Essa classe abstrata herdada pelos components é a <code>BladeComponent</code> que implementa 3 métodos abstratos. São eles:</p>
 
@@ -168,28 +171,27 @@ A estrutura padrão de classe de um componente é a seguinte:</p>
 
 <p>Exemplo de implementação da <code>asbtract function inputs()</code> com um <code>label</code> e um <code>input</code> text:</p>
 
-<pre><code>function inputs()
-{
-  return [
-    'foolabel' =&gt; Form::label(
-        'fooSelect',
-        'Text for label',
-        [
-            'class' =&gt; 'foo-class'
-        ]
-    ),
-    'fooSelect' =&gt; Form::select(
-        'fooSelect',
-        [' '],
-        null,
-        [
-            'multiple' =&gt; null,
-            'class'    =&gt; 'foo-class'
-        ]
-    )
-  ];
-}
-</code></pre>
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">function</span> <span class="pl-en">inputs</span>()</span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">  <span class="pl-k">return</span> [</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>foolabel<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">Form</span><span class="pl-k">::</span>label(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>fooSelect<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>Text for label<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">        [</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>class<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>foo-class<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ]</span>
+<span class="pl-s1">    ),</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>fooSelect<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">Form</span><span class="pl-k">::</span>select(</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>fooSelect<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">        [<span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>],</span>
+<span class="pl-s1">        <span class="pl-c1">null</span>,</span>
+<span class="pl-s1">        [</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>multiple<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">null</span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>class<span class="pl-pds">'</span></span>    <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>foo-class<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ]</span>
+<span class="pl-s1">    )</span>
+<span class="pl-s1">  ];</span>
+<span class="pl-s1">}</span></pre></div>
 
 <blockquote>
 <p><em>É extremamente recomendado utilizar a Form facade para gerar o HTML de todos os inputs e assim seguir o padrão Laravel para garantir o correto funcionamento do componente</em></p>
@@ -207,14 +209,13 @@ A estrutura padrão de classe de um componente é a seguinte:</p>
 
 <p>Exemplo de implementação da <code>asbtract function buttons()</code> com um submit <code>button</code> e um reset <code>button</code>:</p>
 
-<pre><code>function buttons()
-{
-  return [
-    'submitButton' =&gt; Form::submit('Click Me!'),
-    'resetButton =&gt; Form::reset('Clear form')
-  ];
-}
-</code></pre>
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">function</span> <span class="pl-en">buttons</span>()</span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">  <span class="pl-k">return</span> [</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>submitButton<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">Form</span><span class="pl-k">::</span>submit(<span class="pl-s"><span class="pl-pds">'</span>Click Me!<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>resetButton =&gt; Form::reset(<span class="pl-pds">'</span></span><span class="pl-c1">Clear</span> <span class="pl-c1">form</span><span class="pl-s"><span class="pl-pds">'</span>)</span></span>
+<span class="pl-s1"><span class="pl-s">  ];</span></span>
+<span class="pl-s1"><span class="pl-s">}</span></span></pre></div>
 
 <blockquote>
 <p><em>É extremamente recomendado utilizar a Form facade para gerar o HTML de todos os <code>buttons</code> e assim seguir o padrão Laravel para garantir o correto funcionamento do componente</em>  </p>
@@ -232,13 +233,12 @@ A estrutura padrão de classe de um componente é a seguinte:</p>
 
 <p>Exemplo de implementação da <code>asbtract function data()</code> com <code>objeto</code> de dados qualquer:</p>
 
-<pre><code>function data()
-{
-  return [
-    'fooObject' =&gt; app(FooNameSpace\FooClass)
-  ];
-}
-</code></pre>
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">function</span> <span class="pl-en">data</span>()</span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">  <span class="pl-k">return</span> [</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>fooObject<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> app(<span class="pl-c1">FooNameSpace\</span><span class="pl-c1">FooClass</span>)</span>
+<span class="pl-s1">  ];</span>
+<span class="pl-s1">}</span></pre></div>
 
 <h3>
 <a id="css-de-estilo-do-componente" class="anchor" href="#css-de-estilo-do-componente" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS de estilo do componente</h3>
@@ -256,14 +256,13 @@ A estrutura padrão de classe de um componente é a seguinte:</p>
 <p>O BladeComponents permite ao desenvolvedor que utilize diretivas blade dentro do arquivo CSS de stilo padrão do componente.
 Exemplo de arquivo CSS contendo diretivas Blade:</p>
 
-<pre><code>.componentName-class div{
-  @if(array_key_exists('fooLabel',$inputs))
-    border-color : red;
-  @else
-    border-color : blue;
-  @endif;
-}
-</code></pre>
+<div class="highlight highlight-css"><pre><span class="pl-e">.componentName-class</span> <span class="pl-ent">div</span>{
+  @<span class="pl-c1">if</span>(<span class="pl-c1">array</span>_<span class="pl-c1">key</span>_<span class="pl-c1">exists</span>('<span class="pl-c1">foo</span>L<span class="pl-c1">abel</span>',$<span class="pl-c1">inputs</span>))
+    <span class="pl-c1"><span class="pl-c1">border-color</span></span> : <span class="pl-c1">red</span>;
+  @<span class="pl-c1">else</span>
+    <span class="pl-c1"><span class="pl-c1">border-color</span></span> : <span class="pl-c1">blue</span>;
+  @<span class="pl-c1">endif</span>;
+}</pre></div>
 
 <blockquote>
 <p><em>É possível utlizar todos os inputs, buttons e data objects que forão defidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo CSS <code>dinâmico</code></em></p>
@@ -285,14 +284,13 @@ Exemplo de arquivo CSS contendo diretivas Blade:</p>
 <p>O BladeComponents permite ao desenvolvedor que utilize diretivas blade dentro do arquivo JS de controle padrão do componente.
 Exemplo de arquivo JS contendo diretivas Blade utilizando jQuery framework:</p>
 
-<pre><code>$(document).ready(function() {
-  @if(array_key_exists('fooLabel',$inputs))
-    console.log("ready!");
-  @else
-    console.log("Not ready!");
+<div class="highlight highlight-js"><pre>$(<span class="pl-c1">document</span>).ready(<span class="pl-k">function</span>() {
+  @<span class="pl-k">if</span>(array_key_exists(<span class="pl-s"><span class="pl-pds">'</span>fooLabel<span class="pl-pds">'</span></span>,$inputs))
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>ready!<span class="pl-pds">"</span></span>);
+  @<span class="pl-k">else</span>
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>Not ready!<span class="pl-pds">"</span></span>);
   @endif;
-});
-</code></pre>
+});</pre></div>
 
 <blockquote>
 <p><em>É possível utlizar todos os inputs, buttons e data objects que forão defidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo JS <code>dinâmico</code></em></p>
@@ -304,33 +302,31 @@ Exemplo de arquivo JS contendo diretivas Blade utilizando jQuery framework:</p>
 <p>Todo componente criado e registrado no arquivo de configuração do BladeComponents, é também transformado em uma diretiva do Blade e sua utilização é muito simples.
 Dentro de um arquivo de view qualquer, faça o seguinte:</p>
 
-<pre><code>&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<div class="highlight highlight-html"><pre>&lt;!doctype html&gt;
+&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">title</span>&gt;Document&lt;/<span class="pl-ent">title</span>&gt;
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
   @NameComponent('Name');
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
 
 <blockquote>
 <p><em>É possível que ao chamar o componente, seja passado como segundo parâmtro um vetor com variáveis para serem utilizadas na view padrão do componente</em></p>
 </blockquote>
 
-<pre><code>&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<div class="highlight highlight-html"><pre>&lt;!doctype html&gt;
+&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+    &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">title</span>&gt;Document&lt;/<span class="pl-ent">title</span>&gt;
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
   @NameComponent('Name',['foo' =&gt; 'bar','other' =&gt; ObjectClass]);
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
       </section>
     </div>
 
