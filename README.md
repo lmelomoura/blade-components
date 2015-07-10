@@ -5,6 +5,10 @@
 Esse pacote permite criar de forma fácil e simplifica componentes com funções diversas para serem utilizados e reutilizados de maneira simples.
 Com a disponibilização de uma nova funcionalidade no Artisan, é possível com um único comando gerar toda a estrutura de funcionamento de seus novos componentes, separando todos os seus arquivos de forma organizada (PHP, CSS, HTML e Javascript).
 
+[![GitHub issues](https://img.shields.io/github/issues/lmelomoura/blade-components.svg)](https://github.com/lmelomoura/blade-components/issues)
+[![GitHub forks](https://img.shields.io/github/forks/lmelomoura/blade-components.svg)](https://github.com/lmelomoura/blade-components/network)
+[![GitHub stars](https://img.shields.io/github/stars/lmelomoura/blade-components.svg)](https://github.com/lmelomoura/blade-components/stargazers)
+
 ##Instalação
 O componente deve ser instalado (requerido) dentro do diretório padrão de sua aplicação através Composer, com o comando:
 
@@ -66,7 +70,7 @@ A implementação do componente deve ser feita alterando os arquivo gerados de a
 ###A classe BladeComponent
 Todo componente criado pelo BladeComponents (exemplo `app/BladeComponents/Components/NameComponent.php`) herda uma classe abstrata própria. 
 A estrutura padrão de classe de um componente é a seguinte:
-```
+```php
 class NameComponent extends BladeComponent{
   function inputs()
   {
@@ -100,7 +104,7 @@ Essa classe abstrata herdada pelos components é a `BladeComponent` que implemen
 
 Exemplo de implementação da `asbtract function inputs()` com um `label` e um `input` text:
 
-```
+```php
 function inputs()
 {
   return [
@@ -132,7 +136,7 @@ function inputs()
 >*Essa função retorna ao BladeComponents um array associativo contendo o código HTML de todos os `buttons` que serão utilizados pelos arquivos de view, css e js através do vetor de buttons `$buttons['identificador']`*
 
 Exemplo de implementação da `asbtract function buttons()` com um submit `button` e um reset `button`:
-```
+```php
 function buttons()
 {
   return [
@@ -151,7 +155,7 @@ function buttons()
 
 Exemplo de implementação da `asbtract function data()` com `objeto` de dados qualquer:
 
-```
+```php
 function data()
 {
   return [
@@ -171,7 +175,7 @@ Utlize esse arquivo para criar os estilos prórpios de seu componente.
 #### Utilizando diretivas blade dentro de arquivos CSS
 O BladeComponents permite ao desenvolvedor que utilize diretivas blade dentro do arquivo CSS de stilo padrão do componente.
 Exemplo de arquivo CSS contendo diretivas Blade:
-```
+```css
 .componentName-class div{
   @if(array_key_exists('fooLabel',$inputs))
     border-color : red;
@@ -193,7 +197,7 @@ Utlize esse arquivo para criar todo o javascript de controle de seu componente
 #### Utilizando diretivas blade dentro de arquivos JS
 O BladeComponents permite ao desenvolvedor que utilize diretivas blade dentro do arquivo JS de controle padrão do componente.
 Exemplo de arquivo JS contendo diretivas Blade utilizando jQuery framework:
-```
+```js
 $(document).ready(function() {
   @if(array_key_exists('fooLabel',$inputs))
     console.log("ready!");
@@ -207,7 +211,7 @@ $(document).ready(function() {
 ## Utilização dos componentes dentro da aplicação
 Todo componente criado e registrado no arquivo de configuração do BladeComponents, é também transformado em uma diretiva do Blade e sua utilização é muito simples.
 Dentro de um arquivo de view qualquer, faça o seguinte:
-```
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -222,7 +226,7 @@ Dentro de um arquivo de view qualquer, faça o seguinte:
 
 >*É possível que ao chamar o componente, seja passado como segundo parâmtro um vetor com variáveis para serem utilizadas na view padrão do componente*
 
-```
+```html
 <!doctype html>
 <html lang="en">
 <head>
