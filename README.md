@@ -141,7 +141,7 @@ function buttons()
 {
   return [
     'submitButton' => Form::submit('Click Me!'),
-    'resetButton => Form::reset('Clear form')
+    'resetButton' => Form::reset('Clear form')
   ];
 }
 ```
