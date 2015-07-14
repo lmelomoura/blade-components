@@ -41,7 +41,7 @@ Para criar um novo componente, execute o comando:
     php artisan make:bladecomponent Name
   
 Esse comando fará com que o BladeComponents gere toda a estrutura necessária para o funcionamento do novo componente.
-Por padrão, o componente é criado utilizando o nome passado e concatenado ao final a plavra `componente` 
+Por padrão, o componente é criado utilizando o nome passado e concatenado ao final a palavra `componente` 
 Ao final seguinte estrutura de diretórios e arquivos será criada em sua aplicação:
 	
     <app>\
@@ -170,7 +170,7 @@ Quando o compoente é criado pelo BladeComponents sem que o parâmetro `--plain`
 
     app/BladeComponents/Scripts/css/ComponentName.css
 
-Utlize esse arquivo para criar os estilos prórpios de seu componente.
+Utlize esse arquivo para criar os estilos própios de seu componente.
 
 #### Utilizando diretivas blade dentro de arquivos CSS
 O BladeComponents permite ao desenvolvedor que utilize diretivas blade dentro do arquivo CSS de stilo padrão do componente.
@@ -184,7 +184,7 @@ Exemplo de arquivo CSS contendo diretivas Blade:
   @endif;
 }
 ```
->*É possível utlizar todos os inputs, buttons e data objects que forão defidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo CSS `dinâmico`*
+>*É possível utilizar todos os inputs, buttons e data objects que foram definidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo CSS `dinâmico`*
 
 ###Javascript de controle do componente
 
@@ -206,7 +206,7 @@ $(document).ready(function() {
   @endif;
 });
 ```
->*É possível utlizar todos os inputs, buttons e data objects que forão defidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo JS `dinâmico`*
+>*É possível utilizar todos os inputs, buttons e data objects que foram defidos. Todas as diretivas do blade estão disponíveis para utlização, permitindo que se crie um arquivo JS `dinâmico`*
 
 ## Utilização dos componentes dentro da aplicação
 Todo componente criado e registrado no arquivo de configuração do BladeComponents, é também transformado em uma diretiva do Blade e sua utilização é muito simples.
